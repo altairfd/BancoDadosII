@@ -1,0 +1,23 @@
+Aula? 08/03/2022
+
+Dados:: CPF, RG, 
+Informação: Junção dos dados resulta em uma informação.
+Meta dados: Forma que o banco de dados foi criado
+
+Tipos de SGBD:
+Relacionais e não relacionais 
+Multimidia para guardar midia 
+Banco orientados a objetos
+
+Banco de dados relacionais - Toda informação que é armazenada segue esssa instrutura
+Tabela se relaciona com outras tabelas
+Tabelas são compostas por atributos e tuplas
+cada string é uma tupla
+Atributo é um campo = Ex: Nome cpf rg
+
+Tabelas servem para agrupar 
+Tabela Pessoa se torna: Nome, cpf, rg  e data de nascimento
+OBS: Não adicionar informações não relacionais nas tabelas: Pessoa> Preço do produto
+
+Tuplas também podem ser chamadas de registros, cada registro representa um objeto diferente;
+
