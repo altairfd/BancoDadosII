@@ -21,3 +21,16 @@ OBS: Não adicionar informações não relacionais nas tabelas: Pessoa> Preço d
 
 Tuplas também podem ser chamadas de registros, cada registro representa um objeto diferente;
 
+Tabela endereço:
+Atributos (Criados separados)
+Rua, numero etc
+
+Chaves Primária: serve para interligar tabelas
+Como algo orientado a objetos e reaproveitamento de código 
+
+Pessoa > professor
+Chave estrangeira serve para criar uma pessoa e realacionar ela como uma função
+ou seja pessoa se torna professor/funcionário 
+Sem comando a chave Pessoa não se reaproveita em professor/funcionário
+com isso a chave é primária 
+
