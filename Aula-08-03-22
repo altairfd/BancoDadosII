@@ -34,3 +34,18 @@ ou seja pessoa se torna professor/funcionário
 Sem comando a chave Pessoa não se reaproveita em professor/funcionário
 com isso a chave é primária 
 
+Utilizamos analise de requisitos para construir as tabelas e colunas
+Assim conseguimos mapear e realizar a criação do banco de dados
+
+Criação do banco de dados
+1 - analise de requisitos
+Documentação dos dados para criação do dados
+O que o sistema irá precisar juntamente com o usuário
+Requisitos funcionais para o sistemas e não funcinais para a a empresa
+Registrar e revisar o documento onde tudo isso foi anotado
+
+2 - Projeto conceitual
+
+3 - Projeto fisico
+
+
