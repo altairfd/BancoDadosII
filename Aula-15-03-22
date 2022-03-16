@@ -1,0 +1,86 @@
+Atributos:
+Chaves primárias = é um atributo que não pode ser repetido
+Chave estrangeira = Quando ela é o título de uma tabela e em outra é um atributo
+assim dizemos ao banco de dados que as duas tabelas são linkadas
+----------------------
+
+Analise de requisitos:
+
+Primeira etapa: identificar todas entidades (Substantivos)
+No slide contem o texto
+Pais > criminosos > vítimas
+Arma > crime > julgamento
+Sistema > criminoso
+Sistema > crime > vítima 
+Relatório > estatísticas > delegado (Retirando as repetição)
+
+País, delegacia, criminosos, vítimas, arma, crime, julgamento, sistema, realatório, estatistica e delegado
+
+Removemos os atributos assimas que não irão mudar 
+País, delegacia e delegado
+
+Removemos os dados do contexto:
+Julgamento é um fato que ocorre depois que as provas são coletadas
+Sistema = sistema
+Não conseguimos criar uma tabela a partir deles
+
+Removemos os dados sobre o sistema
+No caos relatórios e estatisticas se referem ao sistema
+
+Por fim, sobre apenas criminosos, vítimas, armas e crime
+
+Realizamos a analise e vvemos o que se elacionam
+Criminosos sempre são ligados a uma vítima: um ou mais criminosos com uma ou várias vítimas
+Vítimas e crimes: uma vítima que sofreu um crime ou mais
+Armas e criminosos: o ou mais armas envolvidas a um criminoso
+Crime e criminoso: um ou mais crimes cometidos por um ou mais criminosos;
+Arma e crime: zero ou várias armas podem ser utilizadas em um ou mais crimes.
+
+Identificar os atributos de cada entidade:
+Criminoso: ID, nome, CPF;
+Vítima: ID, nome, CPF, telefone;
+Crime: ID, descrição, local (Rua, Número, Bairro, Estado, CEP), Data, Hora;
+Arma: ID, Calibre, Modelo, Fabricante;
+------------------------------
+
+Atividade:
+
+Cadrasto, clientes, endereço, telefone, CPF, data da compra
+PF PJ = cnpj
+editoras 
+codigo 
+nome autor assunto quantidade de livro estoque 
+
+editoras diferente não fornecem memso tipo de livro 
+
+Clientes, endereço, telefone, cpf data de compra, tipo pessoa, editora, nome do autor, assuntos
+estoque
+
+Cliente x endereço > um cliente com um endereço 
+Cliente x telefone > um ou mais clientes com um ou mais telefone
+Cliente x CPF > um cliente com um CPF
+Cliente x Data da compra > um cliente ou um ou mais compras
+Pessoa x Pessoa fisica > uma pessoa fisica
+Pessoa x Pessoa juridica > uma pessoa juridica com CPNJ
+Editora x Autor > uma editora com um ou mais autor
+Livro x Assunto > um ou mais livro com um ou mais assunto
+
+
+-----------------------------------------
+
+instalar opcao de desenvolvedor do MySql
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
