@@ -1,0 +1,55 @@
+Banco de dados
+
+DDL - Dta definition linguage
+DML - Data manipulation linguage
+
+Base de dados se chama Schema 
+----------------------------
+Date para armazenar datas
+time para armazenar hora
+timestamp para datas e horas
+numeric para casas decimais 
+
+constraint "nome da tabela 1" "nome da tabela 2" foim key 
+weschool
+
+
+CREATE TABLE Pessoa (
+
+cpf int(11) not null,
+nome varchar(50) not null,
+idade int(2) not null,
+sexo varchar(1) not null
+);
+CREATE TABLE Funcionario (
+
+idFuncionario int(100) auto_increment not null,
+pessoa_Cpf int(11) not null,
+primary key(idFuncionario),
+constraint Pessoa foreign key(pessoa_Cpf) references Pessoa(cpf)
+);
+
+
+CREATE TABLE Professor (
+
+idProfessor int(100) auto_increment not null,
+pessoa_Cpf int(11) not null,
+disciplina_idDisciplina int(100) not null,
+primary key(idProfessor),
+constraint Funcionario foreign key(pessoa_Cpf) references Funcionario(pessoa_Cpf) 
+);
+
+CREATE TABLE Aluno (
+
+idAluno int(100) auto_increment not null,
+pessoa_Cpf int(11) not null,
+primary key(idAluno),
+constraint Pessoa foreign key(pessoa_Cpf) references Pessoa(Cpf)
+);
+
+CREATE TABLE Disciplina (
+
+idDisciplina int(100) not null,
+nome varchar(50) not null,
+semestre int(10) not null
+);
