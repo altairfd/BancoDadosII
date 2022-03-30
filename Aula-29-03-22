@@ -1,0 +1,104 @@
+Criação de um novo banco de dados
+
+create table Productlines(
+
+productLines int not null,
+textDescription varchar(100),
+htmlDescription varchar(100),
+image blob,
+constraint PK_ProductLine primary key(productLines)
+);
+
+create table Products(
+
+productCode int not null,
+productName varchar(100),
+productLines int,
+productScale int,
+productVender int,
+producDescription varchar(100),
+quantityInStock int not null,
+buyPrice int not null,
+MSRP INt not null,
+constraint PK_Products primary key(productCode),
+constraint FK_Productlines foreign key (productLines) references Productlines(productLines)
+);
+
+create table Orders(
+
+orderNunber int auto_increment,
+orderDate date,
+requiredDate date,
+shippedDate date,
+status varchar(250),
+comments varchar(250),
+costomerNumber int not null,
+constraint PK_Orders primary key(orderNunber)
+);
+
+create table OderDetails(
+
+orderNumber int auto_increment,
+productCode int not null,
+quantityOrdered int not null,
+priceEach int not null,
+orderLineNumber int not null,
+constraint PK_OrderDetails primary key(orderNumber, productCode),
+constraint FK_OrdersDetails foreign key(orderNumber) references Orders(orderNunber),
+constraint FK_Products foreign key(productCode) references Products(productCode)
+);
+
+create table Offices(
+
+officeCode int not null,
+city varchar(250),
+phone int(11),
+addressLine1 varchar(250),
+addressLine2 varchar(250),
+state varchar(250),
+contry varchar(50),
+postalCode int not null,
+territory varchar(100),
+constraint PK_Offices primary key(officeCode)
+);
+
+create table Employees(
+
+employeeNumber int not null,
+lastName varchar(50) not null,
+fisrName varchar(50) not null,
+extension varchar(100),
+email varchar(250),
+officeCode int not null,
+reportsTo varchar(250),
+jobTitle varchar(100),
+constraint PK_Employees primary key(employeeNumber),
+constraint FK_Office foreign key(officeCode) references Offices(officeCode)
+);
+
+create table Customers(
+
+costumerNumber int not null,
+costumerName varchar(150),
+contactLastName varchar(250),
+phone int(11),
+addressLine1 varchar(250),
+addressLine2 varchar(250),
+ciry varchar(250),
+state varchar(250),
+postalCode int not null,
+county varchar(205),
+salesRepEmployeeNumber varchar(250),
+creditLimit int,
+constraint FK_Costumer primary key(costumerNumber)
+);
+
+create table Payments(
+
+costumerNumber int not null,
+checkNumber int not null,
+paymentDate date,
+amount int,
+constraint PK_Paymants primary key(checkNumber),
+constraint FK_Customers foreign key(costumerNumber) references Customers(costumerNumber)
+);
