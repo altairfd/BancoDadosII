@@ -102,3 +102,14 @@ amount int,
 constraint PK_Paymants primary key(checkNumber),
 constraint FK_Customers foreign key(costumerNumber) references Customers(costumerNumber)
 );
+
+
+insert into Products(productCode, quantityInStock, buyPrice, MSRP) values(001, 50, 003, 125);
+insert into Payments values(001, 001, "1997/04/09", 200);
+insert into Employees(firstName, lastName) values("Altair", "Dias");
+insert into Orders(orderNumber, comments) values(001, "Azul");
+insert into Customers(costumerNumber, phone) values(001, 3499755751);
+insert into Productlines(productLines, textDescription, htmlDescription) values(001, "Azulzim tipo ceu", "www.quebom.com");
+insert into Offices(officeCode, city) values(011, "Santa Vitoria");
+insert into OderDetails(orderNumber, productCode) values(001, 002);
+
