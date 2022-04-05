@@ -1,0 +1,45 @@
+create database AtividadeAvaliativa1;
+
+create table Estacionamento(
+
+idEstacionamento int not null,
+nomeFantasia varchar(45),
+DtUltRelatorio timestamp(6),
+constraint PK_idEstacionamento primary key(idEstacionamento)
+);
+
+create table Ticket(
+
+idTicket int not null,
+CodBarras int,
+Estado int,
+Estacionamento_idEstacionamento int,
+constraint PK_idTicket primary key(idTicket),
+constraint FK_idEstacionamento foreign key(Estacionamento_idEstacionamento) references Estacionamento(idEstacionamento)
+);
+
+create table Setor(
+
+idSetor int not null,
+numeroVagasTotal int,
+numeroVagasOc int,
+Estacionamento_idEstacionamento int,
+constraint PK_idSetor primary key(idSetor),
+constraint FK_idEstacionamento2 foreign key(Estacionamento_idEstacionamento) references Estacionamento(idEstacionamento)
+);
+
+create table Vagas(
+
+idVagas int not null,
+Setor_idSetor int,
+Estado int,
+TempOc int,
+VezesOc int,
+constraint PK_idVagas primary key(idVagas),
+constraint FK_idSetor foreign key(Setor_idSetor) references Setor(idSetor)
+);
+
+insert into Estacionamento(idEstacionamento, nomeFantasia, DtUltRelatorio) value(001, "Cleiton", "05-04-22");
+insert into Ticket(idTicket, CodBarras, Estado) values(001, 1234567890, 05);
+insert into Setor(idSetor, numeroVagasTotal, numeroVagasOc) values(005, 50, 49);
+insert into Vagas(idVagas, Setor_idSetor, Estado) values(001, 005, 05);
