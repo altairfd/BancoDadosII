@@ -1,0 +1,22 @@
+create table Registros (
+	idAluno int auto_increment,
+	nomeAluno varchar(55),
+	email varchar(255),
+    primary key (idAluno)
+);
+
+insert into Registros (nomeAluno, email)
+values
+	("Altair", "altair@email.com"),
+    ("Francisco", "francisco@email.com"),
+    ("Dias", "dias@email.com");
+    
+
+/*criação do Procedure*/
+create procedure buscarAluno
+@aluno varchar (50)
+as
+set @aluno = "%" + @aluno + "%"
+select * from Registros
+
+execute buscarAluno @aluno = "francisco";
