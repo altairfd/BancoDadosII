@@ -1,3 +1,5 @@
+create database alunos
+
 create table Registros (
 	idAluno int auto_increment,
 	nomeAluno varchar(55),
