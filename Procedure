@@ -1,24 +1,36 @@
-create database alunos
+/* CRIANDO A DATABASE PARA O TRABALHO*/
+CREATE DATABASE atividadeavaliativa;
 
-create table Registros (
-	idAluno int auto_increment,
-	nomeAluno varchar(55),
-	email varchar(255),
-    primary key (idAluno)
+/* CRIAÇÃO DE TABELAS*/
+CREATE TABLE ALUNOS(
+	ID_ALUNO INT AUTO_INCREMENT PRIMARY KEY,
+    NOME_ALUNO VARCHAR(256),
+    ENDERECO VARCHAR(256),
+    EMAIL VARCHAR(256)
 );
 
-insert into Registros (nomeAluno, email)
-values
-	("Altair", "altair@email.com"),
-    ("Francisco", "francisco@email.com"),
-    ("Dias", "dias@email.com");
-    
+/*CRIANDO UM PROCEDURE PARA INSERSSÃO*/
 
-/*criação do Procedure*/
-create procedure buscarAluno
-@aluno varchar (50)
-as
-set @aluno = "%" + @aluno + "%"
-select * from Registros
+DELIMITER ?
+CREATE PROCEDURE registrar(PA_NOME_ALUNO VARCHAR(256), PA_ENDERECO VARCHAR(256), PA_EMAIL VARCHAR(256))
+BEGIN
+	INSERT INTO alunos VALUES(NULL, PA_NOME_ALUNO, PA_ENDERECO, PA_EMAIL);
+END
+? /* PROCEDURE DE INSERSSÃO*/
 
-execute buscarAluno @aluno = "francisco";
+/* CRIAÇÃO DA TRIGGER */
+CREATE TRIGGER vemail
+AFTER INSERT ON alunos
+FOR EACH ROW
+BEGIN
+	DELETE FROM alunos 
+    WHERE EMAIL NOT LIKE "%@email%";
+END
+?
+
+DELIMITER ;
+
+/* VERIFICAÇÕES*/
+CALL registrar("Francisco", "Rua 1 N 222", "francisco@email.com");
+
+SELECT * FROM alunos;
