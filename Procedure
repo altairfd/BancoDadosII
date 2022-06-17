@@ -20,3 +20,41 @@ BEGIN
 	END IF;
 END
 ?
+
+
+---------------------------------------------------------------
+
+
+/* CRIANDO A DATABASE PARA O TRABALHO*/
+CREATE DATABASE atividadeavaliativa;
+
+/* CRIAÇÃO DE TABELAS*/
+CREATE TABLE ALUNOS(
+	ID_ALUNO INT AUTO_INCREMENT PRIMARY KEY,
+    NOME_ALUNO VARCHAR(256),
+    ENDERECO VARCHAR(256),
+    EMAIL VARCHAR(256)
+);
+
+/* Criando procedure */
+DELIMITER ?
+CREATE TRIGGER validar
+BEFORE INSERT ON alunos
+FOR EACH ROW
+BEGIN
+    INSERT INTO alunos EMAIL = "%@gmail.com%" OR "%hotmail.com%" OR "%@outlook.com%";
+END
+? /* criei a trigger pra tentar inserir apenas os emaisl */
+
+CREATE PROCEDURE buscar(PA_EMAIL VARCHAR(256))
+BEGIN
+	SELECT NOME_ALUNO, ENDERECO, EMAIL FROM alunos
+	WHERE PA_EMAIL LIKE EMAIL;
+END
+? /* a procedure de validação ta funcionando */
+
+DELIMITER ;
+
+
+CALL buscar("altair@gmail.com");
+DROP PROCEDURE buscar;
