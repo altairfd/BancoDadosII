@@ -58,3 +58,50 @@ DELIMITER ;
 
 CALL buscar("altair@gmail.com");
 DROP PROCEDURE buscar;
+
+
+
+------------------------------------------
+/* CRIANDO A DATABASE PARA O TRABALHO*/
+CREATE DATABASE atividadeavaliativa;
+
+/* CRIAÇÃO DE TABELAS*/
+CREATE TABLE ALUNOS(
+	ID_ALUNO INT AUTO_INCREMENT PRIMARY KEY,
+    NOME_ALUNO VARCHAR(256) NOT NULL,
+    ENDERECO VARCHAR(256) NOT NULL,
+    EMAIL_ALUNO VARCHAR(256)
+);
+
+/* Criando procedure */
+DELIMITER ?
+CREATE TRIGGER validarEmail
+BEFORE INSERT ON alunos
+FOR EACH ROW
+BEGIN
+	IF NEW.EMAIL_ALUNO = "[@outlook.com%], [@gmail.com%], [@outlook.com%]" THEN
+		INSERT INTO alunos
+        VALUES(NULL, NEW.NOME_ALUNO, NEW.ENDERECO, NEW.EMAIL_ALUNO);
+	END IF;
+END
+?
+
+CREATE PROCEDURE buscar(PA_EMAIL VARCHAR(256))
+BEGIN
+	SELECT NOME_ALUNO, ENDERECO, EMAIL_ALUNO FROM alunos
+	WHERE PA_EMAIL LIKE EMAIL_ALUNO;
+END
+? 
+
+DELIMITER ;
+
+INSERT INTO alunos 
+VALUES(NULL, "Dias", "Rua 1 N1", "dias@gmail.com");
+
+CALL buscar("dias@outlook.com");
+
+DROP TRIGGER validarEmail;
+DROP PROCEDURE buscar;
+DROP TABLE alunos;
+
+
